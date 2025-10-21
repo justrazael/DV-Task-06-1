@@ -1,0 +1,197 @@
+*{
+  font-family: gantari, Arial;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center; 
+  background-color: #4c8818;
+  height: 5em;
+}
+
+.logo{
+    width: 5em;
+    padding-left: 1em;
+}
+
+.logo:hover {
+  filter: brightness(0.8);      
+  cursor: pointer;              
+  box-shadow: 0 0 8px #1FCA2A;  
+  transition: all 0.2s;
+}
+
+.nav-container ul {
+  display: flex;
+  list-style-type: none;
+  padding: 1em;
+  background-color: #4c8818;
+  padding-left: 3em;
+  font-weight: bold;
+
+}
+
+.nav-container li {
+  display: block;
+  margin-right: 2em; 
+  position: relative;
+}
+
+.nav-container li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -1em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.1em;
+  height: 2em;
+  background: #888; /* Line color */
+}
+
+.nav-container li a{
+    display: block;
+    text-decoration: none;
+    color: white
+}
+
+.nav-container li:hover a{
+   color: #1FCA2A;
+}
+
+body {
+  background-color: #BFE1BF;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  font-size: 2em;
+  text-align: justify !important;
+ 
+} 
+
+body p{
+  margin-left: 3em;
+}
+
+footer {
+  background-color: #4c8818;
+  padding-bottom: 1em;
+  width: 100%;
+  height: 2em;
+  margin-top: auto;
+}
+
+footer span{
+  color: white;
+  font-weight: bold;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.footer-left {
+  text-align: left;
+  padding-left: 2em;
+  padding-top: 1em;
+}
+
+.footer-right {
+  text-align: right;
+  padding-top: 1em;
+  padding-right: 2em;
+}
+
+/*Television.html specific styles*/
+.content-center {
+  max-width: 50em;        
+  margin: 0 auto;       
+  margin-top: 1em;   
+  margin-bottom: 1em;
+  border-radius: 1em;
+  text-align: center;      
+  padding: 2em;       
+  box-shadow: 0 4px 20px #799b79; 
+}
+
+.content-center img{
+  width: 100%;
+  border-radius: 0.5em;
+}
+
+.content-center h3{
+  font-size: 1.5em;
+  text-align: justify;
+  margin-left: 1em;
+}
+
+.content-center h3 + p{
+  text-align: justify;
+  margin-left: 1em;
+}
+
+body h1{
+  margin: 1em;
+  font-size: 2em;
+  text-align: center;
+}
+
+#filters_screen{ display:flex; gap:12px; flex-wrap:wrap; margin:14px 0 18px 0; }
+
+/* Filter buttons — use classes so we can toggle active state */
+#filters_screen .filter{
+  border: none;
+  background: var(--accent); /* dark orange by default */
+  color: white;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+}
+
+/* Active filter: pale background, dark text */
+#filters_screen .filter.active{
+  background: #f3d9b9; /* pale/light orange */
+  color: var(--text);
+}
+
+#filters_screen .filter:focus{ outline:2px solid rgba(0,0,0,0.08); }
+
+#filters_screen_size{ display:flex; gap:12px; flex-wrap:wrap; margin:14px 0 18px 0; }
+
+/* Filter buttons — use classes so we can toggle active state */
+#filters_screen_size .size-filter{
+  border: none;
+  background: var(--accent); /* dark orange by default */
+  color: white;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+}
+
+/* Active filter: pale background, dark text */
+#filters_screen_size .size-filter.active{
+  background: #f3d9b9; /* pale/light orange */
+  color: var(--text);
+}
+
+#filters_screen_size .size-filter:focus{ outline:2px solid rgba(0,0,0,0.08); }
+
+/* Chart container - keep a little spacing */
+.responsive-svg-container{
+  width:100%;
+  max-width:1000px;
+  margin-bottom:28px;
+}
