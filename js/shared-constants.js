@@ -20,11 +20,12 @@ const xScale = d3.scaleLinear();
 const yScale = d3.scaleLinear();
 const xScaleS = d3.scaleLinear();
 const yScaleS = d3.scaleLinear();
-const colorScaleS = d3.scaleOrdinal();
+const colorScale = d3.scaleOrdinal();
 
 // Set up the bin generator
 const binGenerator = d3.bin()
     .value(d => d.energyConsumption)  // Use energy consumption for binning
+
 
 // Define filters with initial states
 const filters_screen = [

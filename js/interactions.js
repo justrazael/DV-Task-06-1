@@ -71,7 +71,8 @@ const populateSizeFilters = (data) => {
 
 // Add this at the top of interactions.js with your other functions
 const createTooltip = () => {
-    const tooltip = innerChartS.append("g")
+    const tooltip = innerChartS
+        .append("g")
         .attr("class", "tooltip")
         .style("opacity", 0);
 

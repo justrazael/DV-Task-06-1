@@ -18,12 +18,13 @@ const drawScatterplot = (data) => {
         .domain([0, 2600])  // Energy consumption up to 2600 kWh/year
         .range([innerHeight, 0]);
 
-    colorScaleS
-        .domain(["LED", "LCD", "OLED"])
-        .range(["#1f77b4", "#ff7f0e", "#2ca02c"]); // Blue for LED, Orange for LCD, Green for OLED
+    colorScale
+        .domain(data.map(d => d.screenTech))
+        .range(d3.schemeCategory10); // Use D3's category 10 color scheme
 
     // Add X axis
-    innerChartS.append("g")
+    innerChartS
+        .append("g")
         .attr("transform", `translate(0,${innerHeight})`)
         .call(d3.axisBottom(xScaleS))
         .append("text")
@@ -34,32 +35,35 @@ const drawScatterplot = (data) => {
         .text("Star Rating");
 
     // Add Y axis
-    innerChartS.append("g")
+    innerChartS
+        .append("g")
         .call(d3.axisLeft(yScaleS))
         .append("text")
         .attr("class", "axis-label")
         .attr("transform", "rotate(-90)")
-        .attr("x", -innerHeight / 2)
+        .attr("x", -innerHeight / 4)
         .attr("y", -50)
         .attr("fill", "black")
         .text("Energy Consumption (kWh/year)");
 
-    // Add dots
-    innerChartS.selectAll("circle")
+    // Add circles
+    innerChartS
+        .selectAll("circle")
         .data(data)
         .join("circle")
         .attr("cx", d => xScaleS(d.star))
         .attr("cy", d => yScaleS(d.energyConsumption))
         .attr("r", 4)
-        .style("fill", d => colorScaleS(d.screenTech))
-        .style("opacity", 0.7);
+        .style("fill", d => colorScale(d.screenTech))
+        .style("opacity", 0.5);
 
     // Add legend
     const legend = svg.append("g")
         .attr("class", "legend")
         .attr("transform", `translate(${width - margin.right - 100}, ${margin.top})`);
 
-    const technologies = ["LED", "LCD", "OLED"];
+    const technologies = [...new Set(data.map(d => d.screenTech))];
+
     
     technologies.forEach((tech, i) => {
         const legendRow = legend.append("g")
@@ -68,7 +72,7 @@ const drawScatterplot = (data) => {
         legendRow.append("rect")
             .attr("width", 10)
             .attr("height", 10)
-            .attr("fill", colorScaleS(tech));
+            .attr("fill", colorScale(tech));
         
         legendRow.append("text")
             .attr("x", 20)
